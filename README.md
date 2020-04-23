@@ -1,6 +1,6 @@
 # eBook App - Flutter UI
 
-## [Watch it on YouTube(Coming soon)](#)
+## [Watch it on YouTube](https://youtu.be/ACdraZRANaU)
 
 <!-- **Packages we are using:**
 
