@@ -215,7 +215,7 @@ class HomeScreen extends StatelessWidget {
                 top: 24,
                 right: size.width * .35,
               ),
-              height: 185,
+              height: 195,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Color(0xFFEAEAEA).withOpacity(.45),
@@ -224,14 +224,16 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                    "New York Time Best For 11th March 2020",
-                    style: TextStyle(
-                      fontSize: 9,
-                      color: kLightBlackColor,
+                  Container(
+                    margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                    child: Text(
+                      "New York Time Best For 11th March 2020",
+                      style: TextStyle(
+                        fontSize: 9,
+                        color: kLightBlackColor,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 5),
                   Text(
                     "How To Win \nFriends &  Influence",
                     style: Theme.of(context).textTheme.title,
@@ -240,24 +242,28 @@ class HomeScreen extends StatelessWidget {
                     "Gary Venchuk",
                     style: TextStyle(color: kLightBlackColor),
                   ),
-                  SizedBox(height: 10),
-                  Row(
-                    children: <Widget>[
-                      BookRating(score: 4.9),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Text(
-                          "When the earth was flat and everyone wanted to win the game of the best and people….",
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: kLightBlackColor,
+                  Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10.0),
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(right: 10.0), 
+                          child: BookRating(score: 4.9),
+                        ),
+                        Expanded(
+                          child: Text(
+                            "When the earth was flat and everyone wanted to win the game of the best and people….",
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: kLightBlackColor,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  )
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
