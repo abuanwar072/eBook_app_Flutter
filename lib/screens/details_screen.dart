@@ -16,8 +16,9 @@ class DetailsScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: <Widget>[
                 Container(
-                  height: size.height * .5,
-                  width: double.infinity,
+                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.only(top: size.height * .12, left: size.width * .1, right: size.width * .02),
+                  height: size.height * .48,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/bg.png"),
@@ -28,18 +29,10 @@ class DetailsScreen extends StatelessWidget {
                       bottomRight: Radius.circular(50),
                     ),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: size.height * .1),
-                        BookInfo(),
-                      ],
-                    ),
-                  ),
+                  child: BookInfo(size: size,)
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * .5 - 40),
+                  padding: EdgeInsets.only(top: size.height * .48 - 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -80,7 +73,7 @@ class DetailsScreen extends StatelessWidget {
                 children: <Widget>[
                   RichText(
                     text: TextSpan(
-                      style: Theme.of(context).textTheme.display1,
+                      style: Theme.of(context).textTheme.headline5,
                       children: [
                         TextSpan(
                           text: "You might also ",
@@ -123,7 +116,7 @@ class DetailsScreen extends StatelessWidget {
                                       text:
                                           "How To Win \nFriends & Influence \n",
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                       ),
                                     ),
                                     TextSpan(
@@ -138,7 +131,7 @@ class DetailsScreen extends StatelessWidget {
                                   BookRating(
                                     score: 4.9,
                                   ),
-                                  SizedBox(width: 20),
+                                  SizedBox(width: 10),
                                   Expanded(
                                     child: RoundedButton(
                                       text: "Read",
@@ -157,6 +150,7 @@ class DetailsScreen extends StatelessWidget {
                         child: Image.asset(
                           "assets/images/book-3.png",
                           width: 150,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ],
@@ -240,72 +234,104 @@ class ChapterCard extends StatelessWidget {
 }
 
 class BookInfo extends StatelessWidget {
+  
   const BookInfo({
     Key key,
+    this.size,
   }) : super(key: key);
+
+  final Size size;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                "Crushing &",
-                style: Theme.of(context).textTheme.display1,
-              ),
-              Text(
-                "Influence",
-                style: Theme.of(context).textTheme.display1.copyWith(
+    return Container(
+      child: Flex(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        direction: Axis.horizontal,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Crushing &",
+                    style: Theme.of(context).textTheme.headline4.copyWith(
+                      fontSize: 28
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: this.size.height * .005),
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.only(top: 0),
+                  child: Text(
+                    "Influence",
+                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      fontSize: 25,
                       fontWeight: FontWeight.bold,
                     ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
+                  ),
+                ),
+                Row(
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          "When the earth was flat andeveryone wanted to win the gameof the best and people and winning with an A game with all the things you have.",
-                          maxLines: 5,
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: kLightBlackColor,
+                        Container(
+                          width: this.size.width * .3,
+                          padding: EdgeInsets.only(top: this.size.height * .02),
+                          child: Text(
+                            "When the earth was flat andeveryone wanted to win the gameof the best and people and winning with an A game with all the things you have.",
+                            maxLines: 5,
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: kLightBlackColor,
+                            ),
                           ),
                         ),
-                        SizedBox(height: 5),
-                        RoundedButton(
-                          text: "Read",
-                          verticalPadding: 10,
+                        Container(
+                          margin: EdgeInsets.only(top: this.size.height * .015),
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: FlatButton(
+                            onPressed: () {},
+                            child: Text("Read", style: TextStyle(fontWeight: FontWeight.bold),),
+                          ), 
                         )
                       ],
                     ),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.favorite_border),
-                        onPressed: () {},
-                      ),
-                      BookRating(score: 4.9),
-                    ],
-                  )
-                ],
-              ),
-            ],
+                    Column(
+                      children: <Widget>[
+                        IconButton(
+                            icon: Icon(Icons.favorite_border, size: 20, color: Colors.grey,),
+                            onPressed: () {},
+                        ), 
+                        BookRating(score: 4.9),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            )
           ),
-        ),
-        Image.asset(
-          "assets/images/book-1.png",
-          height: 200,
-        ),
-      ],
+          Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.transparent,
+              child: Image.asset(
+                "assets/images/book-1.png",
+                height: double.infinity,
+                alignment: Alignment.topRight,
+                fit: BoxFit.fitWidth,
+              ),
+          )),
+        ],
+      ),
     );
   }
 }
