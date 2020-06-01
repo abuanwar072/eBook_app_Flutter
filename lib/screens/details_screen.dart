@@ -16,7 +16,7 @@ class DetailsScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: <Widget>[
                 Container(
-                  height: size.height * .4,
+                  height: size.height * .5,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -39,7 +39,7 @@ class DetailsScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: size.height * .4 - 30),
+                  padding: EdgeInsets.only(top: size.height * .5 - 40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
